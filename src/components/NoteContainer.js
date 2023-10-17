@@ -23,7 +23,7 @@ function NoteContainer() {
       <Search />
       <div className="container">
         <Sidebar notes={notes} handleClick={handleClick}/>
-        <Content viewNote = {viewNote} setViewNote = {setViewNote}/>
+        <Content viewNote = {viewNote} setViewNote={setViewNote}/>
       </div>
     </>
   );
