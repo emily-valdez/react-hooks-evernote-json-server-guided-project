@@ -4,10 +4,16 @@ import NoteItem from "./NoteItem";
 function NoteList({notes}) {
   console.log(notes)
 
-  const renderNoteCards = notes.map
+  const renderNoteItems = notes.map((note) => (
+    <NoteItem 
+      key={note.id}
+      userId={note.userId}
+      title={note.title}
+      body={note.body}
+    />))
   return (
     <ul>
-      {/* Render list of notes here... */}
+      {renderNoteItems}
       <NoteItem />
     </ul>
   );
