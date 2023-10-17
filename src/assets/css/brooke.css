@@ -110,6 +110,13 @@ div.sidebar ul li:hover {
   background-repeat: no-repeat;
 }
 
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 
 /* Layout Styles */
 .app {

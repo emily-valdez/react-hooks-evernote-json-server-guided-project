@@ -4,12 +4,12 @@ import NoteItem from "./NoteItem";
 function NoteList({notes}) {
   console.log(notes)
 
-  const renderNoteItems = notes.map((note) => (
+  const renderNoteItems = notes.map(({id, userId, title, body}) => (
     <NoteItem 
-      key={note.id}
-      userId={note.userId}
-      title={note.title}
-      body={note.body}
+      key={id}
+      userId={userId}
+      title={title}
+      body={body}
     />))
   return (
     <ul>
