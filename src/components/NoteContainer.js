@@ -6,6 +6,11 @@ import Content from "./Content";
 function NoteContainer() {
   const [notes, setNotes] = useState([])
 
+  function addNoteToState(noteObj) {
+    console.log(noteObj)
+    setNotes([...notes, noteObj])
+  }
+
   useEffect(() => {
     fetch('http://localhost:3000/notes')
     .then(r => r.json())
@@ -31,14 +36,14 @@ function NoteContainer() {
     return lowerCasedTitle.includes(lowerCaseSearchWord)
   })
 
-  console.log(filterNotes)
+  
 
   return (
     <>
       <Search onSearch={onSearch}/>
       <div className="container">
-        <Sidebar notes={filterNotes} handleClick={handleClick}/>
-        <Content viewNote = {viewNote} setViewNote={setViewNote}/>
+        <Sidebar addNoteToState={addNoteToState} notes={filterNotes} handleClick={handleClick}/>
+        <Content addNoteToState={addNoteToState}viewNote = {viewNote} setViewNote={setViewNote}/>
       </div>
     </>
   );
