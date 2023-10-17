@@ -12,17 +12,32 @@ function NoteContainer() {
     .then((allNotes) => setNotes(allNotes))
   }, [])
 
-   const [viewNote, setViewNote] = useState(false)
+  const [viewNote, setViewNote] = useState(false)
 
   function handleClick(note) {
     console.log(note)
     setViewNote(note)
   }
+
+  const [searchWord, setSearchWord] = useState('')
+
+  function onSearch(searchStr) {
+    setSearchWord(searchStr)
+  }
+
+  const filterNotes = notes.filter((note) => {
+    const lowerCasedTitle = note.title.toLowerCase()
+    const lowerCaseSearchWord = searchWord.toLowerCase()
+    return lowerCasedTitle.includes(lowerCaseSearchWord)
+  })
+
+  console.log(filterNotes)
+
   return (
     <>
-      <Search />
+      <Search onSearch={onSearch}/>
       <div className="container">
-        <Sidebar notes={notes} handleClick={handleClick}/>
+        <Sidebar notes={filterNotes} handleClick={handleClick}/>
         <Content viewNote = {viewNote} setViewNote={setViewNote}/>
       </div>
     </>
