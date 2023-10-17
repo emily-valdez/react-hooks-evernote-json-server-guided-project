@@ -1,10 +1,12 @@
 import React from "react";
 
-function NoteViewer() {
+function NoteViewer({note}) {
+
   return (
+    
     <>
-      <h2>Title</h2>
-      <p>Body</p>
+      <h2>{note.title}</h2>
+      <p>{note.body}</p>
       <button>Edit</button>
     </>
   );

@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 
-function NoteItem({title, body}) {
+function NoteItem({title, body, handleClick}) {
+
+  const note = {title, body}
+
   return (
-    <li>
+    <li onClick={() => {handleClick(note)}}>
       <h2>{title}</h2>
       <p className="truncate">{body}</p>
     </li>

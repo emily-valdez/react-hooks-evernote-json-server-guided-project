@@ -1,11 +1,11 @@
 import React from "react";
 import NoteItem from "./NoteItem";
 
-function NoteList({notes}) {
-  console.log(notes)
+function NoteList({notes, handleClick}) {
 
   const renderNoteItems = notes.map(({id, userId, title, body}) => (
     <NoteItem 
+      handleClick={handleClick}
       key={id}
       userId={userId}
       title={title}
@@ -14,7 +14,6 @@ function NoteList({notes}) {
   return (
     <ul>
       {renderNoteItems}
-      <NoteItem />
     </ul>
   );
 }
