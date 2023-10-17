@@ -1,7 +1,10 @@
 import React from "react";
 import NoteItem from "./NoteItem";
 
-function NoteList() {
+function NoteList({notes}) {
+  console.log(notes)
+
+  const renderNoteCards = notes.map
   return (
     <ul>
       {/* Render list of notes here... */}
