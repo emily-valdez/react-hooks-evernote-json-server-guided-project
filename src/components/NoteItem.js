@@ -1,8 +1,8 @@
 import React from "react";
 
-function NoteItem({title, body, handleClick}) {
+function NoteItem({title, body, id, handleClick}) {
 
-  const note = {title, body}
+  const note = {title, body, id}
 
   return (
     <li onClick={()=>{handleClick(note)}}>

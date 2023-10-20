@@ -68,28 +68,8 @@
     },
     {
       "title": "newTitle",
-      "body": "newBody",
+      "body": "newBody h",
       "id": 11
-    },
-    {
-      "title": "newTitle",
-      "body": "newBody",
-      "id": 12
-    },
-    {
-      "title": "newTitle",
-      "body": "newBody",
-      "id": 13
-    },
-    {
-      "title": "newTitle",
-      "body": "newBody",
-      "id": 14
-    },
-    {
-      "title": "newTitle",
-      "body": "newBody",
-      "id": 15
     }
   ]
 }

@@ -8,6 +8,7 @@ function NoteContainer() {
   const [notes, setNotes] = useState([])
   const [viewNote, setViewNote] = useState(false)
   const [searchTitle, setSearchTitle] = useState("")
+  const [edit, setEdit] = useState(false)
 
 
   function addNoteToState(noteObj) {
@@ -34,13 +35,29 @@ function NoteContainer() {
     return lowerCaseTitle.includes(lowerCaseSearchTitle)
   })
 
+ 
+  function patchNote(noteFromServer) {
+    setNotes((currentNotes) => currentNotes.map((note) => {
+    if (note.id===noteFromServer.id) {
+      return noteFromServer
+    } else {
+      return note
+    }
+    })
+   )
+  }
+
+
+  function handleEdit() {
+    setEdit(!edit)
+  }
   
   return (
     <>
       <Search onSearch={onSearch} />
       <div className="container">
-          <Sidebar handleClick={handleClick} notes={filterNotes} addNoteToState={addNoteToState} />
-          <Content viewNote={viewNote} handleClick={handleClick}/>
+          <Sidebar handleClick={handleClick} notes={filterNotes} addNoteToState={addNoteToState} patchNote={patchNote} />
+          <Content viewNote={viewNote} handleClick={handleClick} patchNote={patchNote} handleEdit={handleEdit} edit={edit}/>
       </div>
     </>
   );
@@ -48,20 +65,5 @@ function NoteContainer() {
 
 export default NoteContainer;
 
-
-// const editedNote = {
-//   title:"newTitle", body: "newBody"
-// }
-// function updateNote() {
-//   fetch('http://localhost:3000/notes/:id', {
-//   method: "PATCH",
-//   headers: {
-//   'Content-Type': "application/json",
-//   },
-//   body: JSON.stringify(editedNote),
-//   })
-//   .then((r) => r.json())
-//   .then((noteFromServer) => setEditNote(noteFromServer))
-//   }
 
  
