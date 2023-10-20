@@ -9,6 +9,7 @@ function NoteContainer() {
   const [viewNote, setViewNote] = useState(false)
   const [searchTitle, setSearchTitle] = useState("")
   const [edit, setEdit] = useState(false)
+  const[cancelEdit, setCancelEdit] = useState(false)
 
 
   function addNoteToState(noteObj) {
@@ -22,6 +23,7 @@ function NoteContainer() {
   },[])
 
   const handleClick = (note) => {
+    setEdit(false)
     setViewNote(note)
   }
 
@@ -46,10 +48,13 @@ function NoteContainer() {
     })
    )
   }
-
-
   function handleEdit() {
     setEdit(!edit)
+  }
+  function handleCancel() {
+    setCancelEdit(!cancelEdit)
+    setEdit(!edit)
+    setViewNote(viewNote)
   }
   
   return (
@@ -57,7 +62,7 @@ function NoteContainer() {
       <Search onSearch={onSearch} />
       <div className="container">
           <Sidebar handleClick={handleClick} notes={filterNotes} addNoteToState={addNoteToState} patchNote={patchNote} />
-          <Content viewNote={viewNote} handleClick={handleClick} patchNote={patchNote} handleEdit={handleEdit} edit={edit}/>
+          <Content viewNote={viewNote} handleClick={handleClick} patchNote={patchNote} handleEdit={handleEdit} edit={edit} handleCancel={handleCancel}/>
       </div>
     </>
   );

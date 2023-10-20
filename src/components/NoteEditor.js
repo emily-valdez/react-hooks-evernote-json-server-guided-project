@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function NoteEditor({viewNote, patchNote}) {
+function NoteEditor({viewNote, patchNote, handleCancel}) {
 
   const [title, setTitle] = useState(viewNote.title)
   const [body, setBody] = useState(viewNote.body)
@@ -32,6 +32,7 @@ function NoteEditor({viewNote, patchNote}) {
     .then((noteFromServer) => patchNote(noteFromServer))
   }
   
+ 
 
   return (
     <form className="note-editor" onSubmit={handleSubmit}>
@@ -39,7 +40,7 @@ function NoteEditor({viewNote, patchNote}) {
       <textarea name="body" value={body} onChange={handleBodyChange}/>
       <div className="button-row">
         <input className="button" type="submit" value="Save"/>
-        <button type="button">Cancel</button>
+        <button type="button"onClick={handleCancel}>Cancel</button>
       </div>
     </form>
   );
