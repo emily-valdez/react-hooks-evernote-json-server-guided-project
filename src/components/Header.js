@@ -5,7 +5,7 @@ function Header() {
     <div className="nav-bar">
       <ul>
         <li className="nav-item">
-          <h2>Super Useful Note App in Fake Latin</h2>
+          <h2>Forever Note</h2>
         </li>
       </ul>
     </div>
